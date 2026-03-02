@@ -8,16 +8,16 @@ require('dotenv').config();
 async function setupDatabase() {
   let conn;
   try {
-    
+    // Connect WITHOUT database first (to create it)
     conn = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
-      port: process.env.DB_PORT || 3306,
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
       multipleStatements: true,
     });
 
-    console.log('Connected to MySQL');
+    console.log(' Connected to MySQL');
 
     // Run schema
     const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
@@ -36,9 +36,9 @@ async function setupDatabase() {
         [uuidv4(), 'Hotel Manager', 'admin@hotel.com', passwordHash, 'manager']
       );
       console.log(' Default manager account created');
-      console.log(' Email: admin@hotel.com');
-      console.log(' Password: Admin@1234');
-      console.log(' Please change this password after first login!');
+      console.log('    Email: admin@hotel.com');
+      console.log('    Password: Admin@1234');
+      console.log('     Please change this password after first login!');
     } else {
       console.log(' Manager account already exists');
     }

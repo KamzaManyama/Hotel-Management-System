@@ -48,7 +48,7 @@ INSERT IGNORE INTO hotel_settings (setting_key, setting_value) VALUES
 ('check_out_time', '11:00'),
 ('tax_rate', '0.10'),
 ('currency', 'USD'),
-('currency_symbol', '$'),
+('currency_symbol', 'ZAR'),
 ('cancellation_policy', 'Free cancellation up to 48 hours before arrival.'),
 ('child_policy', 'Children under 12 stay free.'),
 ('pet_policy', 'Pets are not allowed.'),
